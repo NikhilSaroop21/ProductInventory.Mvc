@@ -7,37 +7,37 @@
 <div class="container py-3">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-            <h1 class="h3 mb-0">Inventory</h1>
-            <div class="text-muted">Total products: <strong>@count</strong></div>
+            <h1 class="h3 mb-0 text-yellow">Inventory</h1>
+            <div class="text-muted-ink">Total products: <strong>@count</strong></div>
         </div>
-        <a class="btn btn-soft btn-pill" asp-action="Create">+ Add Product</a>
+        <a class="btn btn-green btn-pill" asp-action="Create">+ Add Product</a>
     </div>
 
     @if (TempData["Msg"] is string msg)
     {
-        <div class="alert alert-ui shadow-sm mb-3">@msg</div>
+        <div class="alert alert-success">@msg</div>
     }
 
     <form method="get" asp-action="Index" class="row g-2 mb-3">
         <div class="col-sm-9 col-md-10">
-            <input type="text" class="form-control" name="q" value="@q" placeholder="Search by ID (e.g. 101) or name (e.g. Laptop)…" />
+            <input type="text" class="form-control" name="q" value="@q" placeholder="Search by ID (e.g. 101) or name (e.g. Laptop) …" />
         </div>
         <div class="col-sm-3 col-md-2 d-grid d-md-block">
-            <button class="btn btn-ghost btn-pill me-2" type="submit">Search</button>
+            <button class="btn btn-orange-outline btn-pill me-2" type="submit">Search</button>
             @if (!string.IsNullOrWhiteSpace(q))
             {
-                <a class="btn btn-outline-secondary btn-pill" asp-action="Index">Clear</a>
+                <a class="btn btn-yellow btn-pill mt-2 mt-md-0" asp-action="Index">Clear</a>
             }
         </div>
     </form>
 
     @if (!Model.Any())
     {
-        <div class="empty">
-            No products found.
+        <div class="card-ui p-4 text-center">
+            <div class="text-muted-ink">No products found.</div>
             @if (!string.IsNullOrWhiteSpace(q))
             {
-                <div class="mt-2">Try clearing the search or check the ProductID.</div>
+                <div class="text-muted-ink mt-1">Try clearing the search or check the ProductID.</div>
             }
         </div>
     }
@@ -45,13 +45,13 @@
     {
         <div class="card-ui p-0 overflow-hidden">
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
+                <table class="table table-hover mb-0">
                     <thead>
                         <tr>
                             <th style="width:140px;">ProductID</th>
                             <th>Name</th>
                             <th class="text-end" style="width:160px;">Price (R)</th>
-                            <th class="text-end" style="width:220px;"></th>
+                            <th class="text-end" style="width:240px;"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,9 +62,9 @@
                                 <td>@p.Name</td>
                                 <td class="text-end">@p.Price.ToString("0.00")</td>
                                 <td class="text-end">
-                                    <a class="btn btn-sm btn-outline-secondary btn-pill" asp-action="Details" asp-route-id="@p.ProductID">View</a>
-                                    <a class="btn btn-sm btn-outline-primary btn-pill" asp-action="Edit" asp-route-id="@p.ProductID">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger btn-pill" asp-action="Delete" asp-route-id="@p.ProductID">Delete</a>
+                                    <a class="btn btn-sm btn-orange-outline btn-pill" asp-action="Details" asp-route-id="@p.ProductID">View</a>
+                                    <a class="btn btn-sm btn-yellow btn-pill" asp-action="Edit" asp-route-id="@p.ProductID">Edit</a>
+                                    <a class="btn btn-sm btn-orange btn-pill" asp-action="Delete" asp-route-id="@p.ProductID">Delete</a>
                                 </td>
                             </tr>
                         }

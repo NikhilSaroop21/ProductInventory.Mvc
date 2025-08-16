@@ -1,4 +1,4 @@
-/* ===== THEME: Carbon Black + Neon Accents ===== */
+/* ===== THEME: Carbon Black + Neon Accents (Refined) ===== */
 :root {
     --black-900: #0d0d0d;
     --black-850: #121212;
@@ -8,8 +8,11 @@
     --green: #28a745; /* confirm / success */
     --yellow: #ffcc00; /* highlight / brand */
     --orange: #ff7a1a; /* danger / alt action */
+
     --ink: #d7d7d7; /* light text */
     --ink-muted: #a6a6a6; /* muted text */
+
+    --transition: all 0.25s ease-in-out;
 }
 
 /* ===== Global ===== */
@@ -17,16 +20,19 @@ body {
     background: var(--black-900);
     color: var(--ink);
     font-family: "Segoe UI", "Roboto", sans-serif;
+    line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5 {
     color: var(--white);
     font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 a {
     color: var(--yellow);
     text-decoration: none;
+    transition: var(--transition);
 }
 
     a:hover {
@@ -45,24 +51,41 @@ a {
 /* ===== Navbar ===== */
 .nav-carbon {
     background: linear-gradient(90deg, var(--black-900), var(--black-800), var(--black-900));
+    padding: 0.8rem 1.2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand {
+    color: var(--yellow) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+    .navbar-brand:hover {
+        color: var(--orange) !important;
+    }
+
+.nav-link {
     color: var(--yellow) !important;
     font-weight: 500;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
 }
 
     .nav-link:hover {
         color: var(--orange) !important;
+        transform: translateY(-1px);
     }
 
-/* Search box inside navbar */
+/* Search box */
 .form-carbon {
     background: rgba(255,255,255,.08);
     color: var(--white);
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 999px;
-    padding: .375rem 1rem;
+    padding: .4rem 1rem;
+    transition: var(--transition);
 }
 
     .form-carbon::placeholder {
@@ -70,50 +93,47 @@ a {
     }
 
     .form-carbon:focus {
-        outline: none;
         border-color: var(--yellow);
-        box-shadow: 0 0 0 .2rem rgba(255,204,0,.25);
+        box-shadow: 0 0 0 .25rem rgba(255,204,0,.25);
     }
 
 /* ===== Buttons ===== */
 .btn-pill {
     border-radius: 999px;
+    transition: var(--transition);
 }
 
 .btn-green {
     background: var(--green);
     color: var(--white);
-    border: 0;
     font-weight: 500;
 }
 
     .btn-green:hover {
         background: #23923d;
-        color: var(--white);
+        transform: scale(1.03);
     }
 
 .btn-orange {
     background: var(--orange);
     color: #000;
-    border: 0;
     font-weight: 500;
 }
 
     .btn-orange:hover {
         background: #e66d0f;
-        color: #000;
+        transform: scale(1.03);
     }
 
 .btn-yellow {
     background: var(--yellow);
     color: #000;
-    border: 0;
     font-weight: 500;
 }
 
     .btn-yellow:hover {
         background: #e6b800;
-        color: #000;
+        transform: scale(1.03);
     }
 
 .btn-orange-outline {
@@ -125,6 +145,7 @@ a {
     .btn-orange-outline:hover {
         background: var(--orange);
         color: #000 !important;
+        transform: scale(1.03);
     }
 
 /* ===== Cards ===== */
@@ -134,7 +155,13 @@ a {
     border: 1px solid var(--black-700);
     border-radius: 14px;
     box-shadow: 0 8px 22px rgba(0,0,0,.55);
+    padding: 1rem;
+    transition: var(--transition);
 }
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
 
 .card-header {
     background: var(--black-700);
@@ -147,20 +174,24 @@ a {
 .table {
     color: var(--white);
     background: var(--black-850);
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
     .table thead th {
         background: var(--green);
         color: #fff;
-        border: 0;
         font-weight: 600;
+        border: 0;
     }
 
-.table-hover tbody tr:hover {
-    background: var(--black-700);
+.table-hover tbody tr {
+    transition: var(--transition);
 }
+
+    .table-hover tbody tr:hover {
+        background: var(--black-700);
+    }
 
 /* ===== Forms ===== */
 .form-label {
@@ -173,12 +204,13 @@ a {
     color: var(--white);
     border: 1px solid var(--black-700);
     border-radius: 8px;
+    transition: var(--transition);
 }
 
     .form-control:focus {
         background: var(--black-800);
         border-color: var(--yellow);
-        box-shadow: 0 0 0 .2rem rgba(255,204,0,.25);
+        box-shadow: 0 0 0 .25rem rgba(255,204,0,.25);
         color: var(--white);
     }
 
@@ -187,6 +219,8 @@ a {
     border-radius: 12px;
     border: 1px solid var(--black-700);
     font-weight: 500;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .alert-success {
@@ -212,10 +246,14 @@ a {
     background: var(--black-900);
     color: var(--ink-muted);
     padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--black-700);
 }
 
     .footer-carbon a {
         color: var(--yellow);
+        transition: var(--transition);
     }
 
         .footer-carbon a:hover {
